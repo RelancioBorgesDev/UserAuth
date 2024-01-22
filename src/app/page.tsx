@@ -1,6 +1,7 @@
 import Input from "@/components/Input/Input";
 import Logo from "@/components/Logo/Logo";
 import Separator from "@/components/Separator/Separator";
+import SocialWrapper from "@/components/SocialWrapper/SocialWrapper";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
@@ -22,30 +23,16 @@ export default function Home() {
           action=""
           className="w-[400px] bg-zinc-900 rounded-lg flex flex-col px-4 py-8 gap-8 shadow-2xl"
         >
-          <Input placeholder="e-mail" type="email" />
-          <Input placeholder="senha" type="senha" />
-          <button className="w-full bg-white p-2 font-bold text-cyan-950 rounded-lg">
+          <Input placeholder="E-mail" type="email" />
+          <Input placeholder="Senha" type="senha" />
+          <button className="w-full bg-white p-2 font-bold text-slate-950 rounded border-0">
             Enviar
           </button>
           <Separator />
           <div className="flex justify-around w-full">
-            <span className="border-2 border-slate-950 p-2 rounded-lg bg-zinc-950">
-              <Link href={""}>
-                <FcGoogle size={22} />
-              </Link>
-            </span>
-
-            <span className="border-2 border-slate-950 p-2 rounded-lg bg-zinc-950">
-              <Link href={""}>
-                <FaXTwitter size={22} className="text-white" />
-              </Link>
-            </span>
-
-            <span className="border-2 border-slate-950 p-2 rounded-lg bg-zinc-950">
-              <Link href={""}>
-                <FaFacebook size={22} className="text-blue-500" />
-              </Link>
-            </span>
+            <SocialWrapper link="/" icon={FcGoogle} />
+            <SocialWrapper link="/" icon={FaXTwitter} />
+            <SocialWrapper link="/" icon={FaFacebook} />
           </div>
         </form>
       </div>
