@@ -14,8 +14,11 @@ interface LoginFormData {
 }
 
 const LoginSchema: z.ZodType<LoginFormData> = z.object({
-  email: z.string().email(),
-  senha: z.string().min(4).max(12),
+  email: z.string().email({ message: "Email deve ser preenchido" }),
+  senha: z
+    .string()
+    .min(4, { message: "A senha deve ter no mínimo 4 dígitos" })
+    .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
 });
 
 export default function LoginForm() {
@@ -33,13 +36,26 @@ export default function LoginForm() {
   return (
     <form
       action=""
-      className="w-[400px] bg-zinc-900 rounded-lg flex flex-col px-4 py-8 gap-8 shadow-2xl"
+      className="w-[400px] bg-zinc-900 rounded-lg flex flex-col px-4 py-8  shadow-2xl gap-3"
       onSubmit={handleSubmit(handleSubmitLoginForm)}
     >
       <Input placeholder="E-mail" type="email" {...register("email")} />
+      {errors.email?.message && (
+        <small className="text-red-500 font-extralight">
+          {errors.email?.message}
+        </small>
+      )}
 
       <Input placeholder="Senha" type="senha" {...register("senha")} />
-      <button className="w-full bg-white p-2 font-bold text-slate-950 rounded border-0">
+      {errors.senha?.message && (
+        <small className="text-red-500 font-extralight">
+          {errors.senha?.message}
+        </small>
+      )}
+      <button
+        className="w-full bg-white p-2 font-bold text-slate-950 rounded border-0 hover:brightness-90"
+        type="submit"
+      >
         Enviar
       </button>
       <Separator />

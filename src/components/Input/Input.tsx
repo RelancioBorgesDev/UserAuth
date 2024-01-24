@@ -17,7 +17,7 @@ const Input = React.forwardRef(
         name={name}
         ref={ref}
         placeholder={placeholder}
-        className={`p-4 rounded-md border-2 border-zinc-600 bg-transparent outline-none text-white placeholder:text-gray-00`}
+        className={`p-4 rounded-md border-2 border-zinc-600 bg-transparent outline-none text-white placeholder:text-gray-00 focus-within:border-2 focus-within:border-slate-50`}
       />
     );
   }

@@ -14,7 +14,7 @@ export default function SocialWrapper({
 }: SocialWrapperProps) {
   return (
     <span
-      className={`border-2 border-slate-950 p-2 rounded-lg text-zinc-950 bg-white ${color} `}
+      className={`border-2 border-slate-950 p-2 rounded-lg text-zinc-950 bg-white ${color} hover:brightness-90`}
     >
       <Link href={link} className="flex items-center justify-center gap-4">
         <Icon size={22} />
