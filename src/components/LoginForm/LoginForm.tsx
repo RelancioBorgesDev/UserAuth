@@ -1,13 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Separator from "../Separator/Separator";
 import SocialWrapper from "./components/SocialWrapper/SocialWrapper";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 import Input from "../Input/Input";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Toaster, toast } from "sonner";
 interface LoginFormData {
   email: string;
   senha: string;
@@ -26,13 +27,26 @@ export default function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<LoginFormData>({
     resolver: zodResolver(LoginSchema),
   });
 
   function handleSubmitLoginForm(data: LoginFormData) {
+    toast.success("Logado com sucesso");
     console.log(data);
+    reset();
   }
+
+  useEffect(() => {
+    if (errors.email) {
+      toast.error("Erro no campo de email.");
+    }
+
+    if (errors.senha) {
+      toast.error("Erro no campo de senha.");
+    }
+  }, [errors]);
   return (
     <form
       action=""
@@ -46,7 +60,7 @@ export default function LoginForm() {
         </small>
       )}
 
-      <Input placeholder="Senha" type="senha" {...register("senha")} />
+      <Input placeholder="Senha" type="password" {...register("senha")} />
       {errors.senha?.message && (
         <small className="text-red-500 font-extralight">
           {errors.senha?.message}
@@ -73,6 +87,8 @@ export default function LoginForm() {
           text="Faça login com o Github"
         />
       </div>
+
+      <Toaster richColors />
     </form>
   );
 }
