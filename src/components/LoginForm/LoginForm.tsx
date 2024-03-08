@@ -70,9 +70,9 @@ export default function LoginForm() {
         className="w-full bg-white p-2 font-bold text-slate-950 rounded border-0 hover:brightness-90"
         type="submit"
       >
-        Enviar
+        Logar
       </button>
-      <Separator />
+      <Separator separator_type="horizontal" />
       <div className="flex flex-col justify-around w-full gap-2">
         <SocialWrapper
           link="/"
@@ -88,7 +88,7 @@ export default function LoginForm() {
         />
       </div>
 
-      <Toaster richColors />
+      <Toaster richColors visibleToasts={2} />
     </form>
   );
 }

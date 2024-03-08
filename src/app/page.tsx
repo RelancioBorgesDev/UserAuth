@@ -1,5 +1,6 @@
 import LoginForm from "@/components/LoginForm/LoginForm";
 import Logo from "@/components/Logo/Logo";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,11 +9,18 @@ export default function Home() {
         <Logo />
         <div className="h-screen text-white font-bold flex flex-col gap-2  justify-center">
           <h1 className="text-4xl">Faça login em nossa plataforma</h1>
-          <p className="text-md text-gray-600 font-extralight">Aproveite os nossos serviços</p>
+          <p className="text-md text-gray-600 font-extralight">
+            Aproveite os nossos serviços
+          </p>
         </div>
       </div>
 
-      <div className="w-1/2 flex items-center justify-center shadow-2xl">
+      <div className="w-1/2 flex items-center justify-center shadow-2xl relative">
+        <Link href={"/sign-up"} className="absolute top-5 right-5 ">
+          <h3 className="text-gray-400 hover:underline">
+            Não possui conta ? Faça seu cadastro
+          </h3>
+        </Link>
         <LoginForm />
       </div>
     </main>
