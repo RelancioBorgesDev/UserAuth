@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import InputWrapper from "../input-wrapper/input-wrapper";
-import { Input } from "../input/input";
 import { BiRightArrow } from "react-icons/bi";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/input/input";
+import Button from "@/components/button/button";
 
 interface SignUpFormData {
   fullname: string;
@@ -77,14 +78,9 @@ export default function Form() {
           {...register("password")}
         />
       </InputWrapper>
-
-      <button
-        type="submit"
-        className="bg-zinc-950/85 text-white font-semibold rounded-lg py-2 flex items-center justify-center gap-2 group"
-      >
-        Continuar
-        <BiRightArrow className="group-hover:scale-110" />
-      </button>
+      <Button variant={"black"}>
+        Continuar <BiRightArrow className="group-hover:scale-110" />
+      </Button>
     </form>
   );
 }

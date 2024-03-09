@@ -1,14 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
-import Separator from "../Separator/Separator";
-import SocialWrapper from "./components/SocialWrapper/SocialWrapper";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa6";
-import Input from "../Input/Input";
-import * as z from "zod";
+import { useEffect } from "react";
+import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Toaster, toast } from "sonner";
+import * as z from "zod";
+
+import { Input } from "@/components/input/input";
+import Separator from "@/components/separator/separator";
+import SocialLoginOption from "@/components/social-login-option/social-login-option";
+import Button from "@/components/button/button";
 interface LoginFormData {
   email: string;
   senha: string;
@@ -50,7 +51,7 @@ export default function LoginForm() {
   return (
     <form
       action=""
-      className="w-[400px] bg-zinc-900 rounded-lg flex flex-col px-4 py-8  shadow-2xl gap-3"
+      className="w-[400px] bg-white rounded-lg flex flex-col px-4 py-8  shadow-2xl gap-3"
       onSubmit={handleSubmit(handleSubmitLoginForm)}
     >
       <Input placeholder="E-mail" type="email" {...register("email")} />
@@ -66,24 +67,19 @@ export default function LoginForm() {
           {errors.senha?.message}
         </small>
       )}
-      <button
-        className="w-full bg-white p-2 font-bold text-slate-950 rounded border-0 hover:brightness-90"
-        type="submit"
-      >
+      <Button variant={"black"} type="submit" >
         Logar
-      </button>
-      <Separator separator_type="horizontal" />
+      </Button>
+      <Separator orientation={"horizontal"} />
       <div className="flex flex-col justify-around w-full gap-2">
-        <SocialWrapper
-          link="/"
-          icon={FcGoogle}
-          color=""
+        <SocialLoginOption
+          href="/"
+          icon={FaGoogle}
           text="Faça login com o Google"
         />
-        <SocialWrapper
-          link="/"
+        <SocialLoginOption
+          href="/"
           icon={FaGithub}
-          color="text-white"
           text="Faça login com o Github"
         />
       </div>
