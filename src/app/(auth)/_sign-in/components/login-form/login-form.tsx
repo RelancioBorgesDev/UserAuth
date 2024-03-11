@@ -10,14 +10,15 @@ import { Input } from "@/components/input/input";
 import Separator from "@/components/separator/separator";
 import SocialLoginOption from "@/components/social-login-option/social-login-option";
 import Button from "@/components/button/button";
+import ErrorMessage from "@/components/error-message/error-message";
 interface LoginFormData {
   email: string;
-  senha: string;
+  password: string;
 }
 
 const LoginSchema: z.ZodType<LoginFormData> = z.object({
   email: z.string().email({ message: "Email deve ser preenchido" }),
-  senha: z
+  password: z
     .string()
     .min(4, { message: "A senha deve ter no mínimo 4 dígitos" })
     .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
@@ -44,8 +45,8 @@ export default function LoginForm() {
       toast.error("Erro no campo de email.");
     }
 
-    if (errors.senha) {
-      toast.error("Erro no campo de senha.");
+    if (errors.password) {
+      toast.error("Erro no campo de password.");
     }
   }, [errors]);
   return (
@@ -54,20 +55,26 @@ export default function LoginForm() {
       className="w-[400px] bg-white rounded-lg flex flex-col px-4 py-8  shadow-2xl gap-3"
       onSubmit={handleSubmit(handleSubmitLoginForm)}
     >
-      <Input placeholder="E-mail" type="email" {...register("email")} />
+      <Input
+        placeholder="E-mail"
+        type="email"
+        {...register("email")}
+        variant={errors.email ? "error" : undefined}
+      />
       {errors.email?.message && (
-        <small className="text-red-500 font-extralight">
-          {errors.email?.message}
-        </small>
+        <ErrorMessage>{errors.email?.message}</ErrorMessage>
       )}
 
-      <Input placeholder="Senha" type="password" {...register("senha")} />
-      {errors.senha?.message && (
-        <small className="text-red-500 font-extralight">
-          {errors.senha?.message}
-        </small>
+      <Input
+        placeholder="Senha"
+        type="password"
+        {...register("password")}
+        variant={errors.password ? "error" : undefined}
+      />
+      {errors.password?.message && (
+        <ErrorMessage>{errors.password?.message}</ErrorMessage>
       )}
-      <Button variant={"black"} type="submit" >
+      <Button variant={"black"} type="submit">
         Logar
       </Button>
       <Separator orientation={"horizontal"} />
