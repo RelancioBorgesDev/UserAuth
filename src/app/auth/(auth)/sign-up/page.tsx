@@ -9,7 +9,7 @@ import Separator from "@/components/separator/separator";
 export default function SignUp() {
   return (
     <main className="flex items-center justify-center h-screen relative">
-      <Link href={"/"} className="absolute top-5 left-5 ">
+      <Link href={"/auth/sign-in"} className="absolute top-5 left-5 ">
         <h3 className="text-gray-400 hover:underline">
           Já possui conta ? Faça seu login
         </h3>
