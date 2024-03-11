@@ -9,7 +9,7 @@ import { Input } from "@/components/input/input";
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 
-interface SignUpFormData {
+interface RegisterFormData {
   fullname: string;
   username: string;
   email: string;
@@ -17,7 +17,7 @@ interface SignUpFormData {
   password: string;
 }
 
-const SignUpSchema: z.ZodType<SignUpFormData> = z.object({
+const SignUpSchema: z.ZodType<RegisterFormData> = z.object({
   fullname: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
   username: z
     .string()
@@ -37,11 +37,11 @@ export default function RegisterForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<SignUpFormData>({
+  } = useForm<RegisterFormData>({
     resolver: zodResolver(SignUpSchema),
   });
   const [phone, setPhone] = useState("");
-  function onSubmit(data: SignUpFormData) {
+  function onSubmit(data: RegisterFormData) {
     console.log(data);
   }
   return (

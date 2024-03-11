@@ -1,5 +1,5 @@
 import { LoginFormData } from "@/app/auth/(auth)/sign-in/components/login-form/login-form";
-import { SignUpFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
+import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
 import * as z from "zod";
 
 export const LoginSchema: z.ZodType<LoginFormData> = z.object({
@@ -10,7 +10,7 @@ export const LoginSchema: z.ZodType<LoginFormData> = z.object({
     .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
 });
 
-export const SignUpSchema: z.ZodType<SignUpFormData> = z.object({
+export const SignUpSchema: z.ZodType<RegisterFormData> = z.object({
   fullname: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
   username: z
     .string()

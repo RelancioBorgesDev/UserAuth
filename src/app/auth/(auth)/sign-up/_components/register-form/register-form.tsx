@@ -9,7 +9,7 @@ import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { SignUpSchema } from "@/schemas/schemas";
 
-export interface SignUpFormData {
+export interface RegisterFormData {
   fullname: string;
   username: string;
   email: string;
@@ -24,11 +24,11 @@ export default function RegisterForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<SignUpFormData>({
+  } = useForm<RegisterFormData>({
     resolver: zodResolver(SignUpSchema),
   });
 
-  function onSubmit(data: SignUpFormData) {
+  function onSubmit(data: RegisterFormData) {
     console.log(data);
   }
   return (
