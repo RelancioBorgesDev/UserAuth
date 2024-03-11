@@ -5,7 +5,7 @@ import "./globals.css";
 const lexend = Lexend({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "OAuth Project",
+  title: "User Auth",
 };
 
 export default function RootLayout({
