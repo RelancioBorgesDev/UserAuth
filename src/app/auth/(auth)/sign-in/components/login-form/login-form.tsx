@@ -11,18 +11,11 @@ import Separator from "@/components/separator/separator";
 import SocialLoginOption from "@/components/social-login-option/social-login-option";
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
-interface LoginFormData {
+import { LoginSchema } from "@/schemas/schemas";
+export interface LoginFormData {
   email: string;
   password: string;
 }
-
-const LoginSchema: z.ZodType<LoginFormData> = z.object({
-  email: z.string().email({ message: "Email deve ser preenchido" }),
-  password: z
-    .string()
-    .min(4, { message: "A senha deve ter no mínimo 4 dígitos" })
-    .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
-});
 
 export default function LoginForm() {
   const {

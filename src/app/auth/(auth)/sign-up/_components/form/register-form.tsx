@@ -30,7 +30,7 @@ const SignUpSchema: z.ZodType<SignUpFormData> = z.object({
     .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
 });
 
-export default function Form() {
+export default function RegisterForm() {
   const {
     register,
     control,

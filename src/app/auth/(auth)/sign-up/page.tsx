@@ -1,10 +1,10 @@
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 
-import Form from "./_components/form/form";
 import Link from "next/link";
 import SocialLoginOption from "@/components/social-login-option/social-login-option";
 import Logo from "@/components/logo/logo";
 import Separator from "@/components/separator/separator";
+import RegisterForm from "./_components/register-form/register-form";
 
 export default function SignUp() {
   return (
@@ -32,7 +32,7 @@ export default function SignUp() {
           <Separator orientation={"horizontal"} />
         </div>
         {/* OAuth Form */}
-        <Form />
+        <RegisterForm />
       </div>
     </main>
   );
