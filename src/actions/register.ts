@@ -1,7 +1,14 @@
 "use server";
 
-import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
+import { RegisterSchema } from "@/schemas/schemas";
+import * as z from "zod";
 
-export const register = (data: RegisterFormData) => {
-  console.log(data);
+export const registerAction = async (values: z.infer<typeof RegisterSchema>) => {
+  const validateFields = await RegisterSchema.safeParseAsync(values);
+
+  if (validateFields.success) {
+    return { success: "Email enviado !" };
+  } else {
+    return { error: "Campos inválidos" };
+  }
 };

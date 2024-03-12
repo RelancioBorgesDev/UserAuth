@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import InputWrapper from "../input-wrapper/input-wrapper";
 import { BiRightArrow } from "react-icons/bi";
 import { useForm } from "react-hook-form";
@@ -7,7 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/input/input";
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
-import { SignUpSchema } from "@/schemas/schemas";
+import { RegisterSchema } from "@/schemas/schemas";
+import { registerAction } from "@/actions/register";
+import { toast } from "sonner";
 
 export interface RegisterFormData {
   fullname: string;
@@ -20,16 +22,20 @@ export interface RegisterFormData {
 export default function RegisterForm() {
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<RegisterFormData>({
-    resolver: zodResolver(SignUpSchema),
+    resolver: zodResolver(RegisterSchema),
   });
 
-  function onSubmit(data: RegisterFormData) {
-    console.log(data);
+  async function onSubmit(data: RegisterFormData) {
+    const message = await registerAction(data);
+    message.success
+      ? toast.success(message.success)
+      : toast.error(message.error);
+
+    reset();
   }
   return (
     <form

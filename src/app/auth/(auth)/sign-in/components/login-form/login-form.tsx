@@ -12,6 +12,7 @@ import SocialLoginOption from "@/components/social-login-option/social-login-opt
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { LoginSchema } from "@/schemas/schemas";
+import { loginAction } from "@/actions/login";
 export interface LoginFormData {
   email: string;
   password: string;
@@ -27,9 +28,12 @@ export default function LoginForm() {
     resolver: zodResolver(LoginSchema),
   });
 
-  function handleSubmitLoginForm(data: LoginFormData) {
-    toast.success("Logado com sucesso");
-    console.log(data);
+  async function handleSubmitLoginForm(data: LoginFormData) {
+    const message = await loginAction(data);
+    message.success
+      ? toast.success(message.success)
+      : toast.error(message.error);
+
     reset();
   }
 

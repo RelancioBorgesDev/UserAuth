@@ -10,7 +10,7 @@ export const LoginSchema: z.ZodType<LoginFormData> = z.object({
     .max(32, { message: "A senha deve ter no máximo 32 dígitos" }),
 });
 
-export const SignUpSchema: z.ZodType<RegisterFormData> = z.object({
+export const RegisterSchema: z.ZodType<RegisterFormData> = z.object({
   fullname: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
   username: z
     .string()
