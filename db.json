@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "id": "eaac0e43-4ec1-43f6-959c-8fdbdba4cefe",
+      "fullname": "Relancio",
+      "username": "rbdev",
+      "email": "3c43f58c3a3b7c3b49b95644b0661ec477ba62edf3eb1db6fecbbb43428f6aa6",
+      "phone_number": "a328c80171be1124be7a80868bde6b5f5e0854893286283b9f0673c6bf568112",
+      "password": "$2b$10$zlis57sbQyXpo1n3jeeIPe0mmmflxqE/8MqfHkqJy71yUhlG9FdcS"
+    },
+    {
+      "id": "e2d46f03-b74d-402b-b465-2c0618dfe1ff",
+      "fullname": "Fred",
+      "username": "fredcald",
+      "email": "fedcald@gmail.com",
+      "phone_number": "123546546",
+      "password": "$2b$10$oMUEiKVNM5HV/2Z6avtdI.Mwh3WBobebe9bTan0rFrcbHM9lSb0Wu"
+    }
+  ]
+}

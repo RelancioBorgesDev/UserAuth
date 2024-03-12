@@ -4,7 +4,6 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Toaster, toast } from "sonner";
-import * as z from "zod";
 
 import { Input } from "@/components/input/input";
 import Separator from "@/components/separator/separator";
@@ -29,6 +28,7 @@ export default function LoginForm() {
   });
 
   async function handleSubmitLoginForm(data: LoginFormData) {
+    console.log(data);
     const message = await loginAction(data);
     message.success
       ? toast.success(message.success)
@@ -46,6 +46,7 @@ export default function LoginForm() {
       toast.error("Erro no campo de password.");
     }
   }, [errors]);
+  console.log(errors);
   return (
     <form
       action=""
