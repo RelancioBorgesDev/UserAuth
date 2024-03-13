@@ -9,9 +9,6 @@ import ErrorMessage from "@/components/error-message/error-message";
 import { RegisterSchema } from "@/schemas/schemas";
 import { createUserAction, registerAction } from "@/actions/register";
 import { Toaster, toast } from "sonner";
-import { v4 as uuid } from "uuid";
-import { api } from "@/libs/axios/axios";
-import { encryptPass } from "@/utils/bcrypt";
 
 export interface RegisterFormData {
   id?: string;

@@ -1,14 +1,13 @@
 "use server";
 
 import * as z from "zod";
-import bcrypt from "bcrypt";
-
 import { RegisterSchema } from "@/schemas/schemas";
 import { v4 as uuid } from "uuid";
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
 import { api } from "@/libs/axios/axios";
 import { emailAlreadyExists } from "@/utils/userValidation";
 import { encryptPass } from "@/utils/bcrypt";
+import { ResponseObjectType, responseObject } from "@/utils/responseObject";
 
 export const registerAction = async (
   values: z.infer<typeof RegisterSchema>
@@ -22,13 +21,15 @@ export const registerAction = async (
   }
 };
 
-export const createUserAction = async (data: RegisterFormData) => {
+export const createUserAction = async (
+  data: RegisterFormData
+): Promise<ResponseObjectType> => {
   let emailAlreadyInUse = await emailAlreadyExists(data.email);
   if (emailAlreadyInUse) {
-    return {
-      status: 409,
-      message: "O email já existe, por favor escolha um novo email.",
-    };
+    return responseObject(
+      409,
+      "O email já existe, por favor escolha um novo email."
+    );
   } else {
     const newUser: RegisterFormData = {
       id: uuid(),
@@ -41,9 +42,6 @@ export const createUserAction = async (data: RegisterFormData) => {
 
     await api.post("user", newUser);
 
-    return {
-      status: 201,
-      message: "Usuário criado com sucesso",
-    };
+    return responseObject(201, "Usuário criado com sucesso.");
   }
 };
