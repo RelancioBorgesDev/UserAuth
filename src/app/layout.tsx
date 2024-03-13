@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
+import NextAuthSessionProvider from "@/providers/sessionProviders";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={lexend.className}>
       <body className={"bg-gradient-to-b from-zinc-950 to-white h-screen"}>
-        <main className="h-screen">{children}</main>
+        <main className="h-screen">
+          <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+        </main>
       </body>
     </html>
   );

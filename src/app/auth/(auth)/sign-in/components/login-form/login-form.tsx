@@ -12,6 +12,8 @@ import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { LoginSchema } from "@/schemas/schemas";
 import { loginAction } from "@/actions/login";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export interface LoginFormData {
   email: string;
   password: string;
@@ -27,14 +29,21 @@ export default function LoginForm() {
     resolver: zodResolver(LoginSchema),
   });
 
-  async function handleSubmitLoginForm(data: LoginFormData) {
-    console.log(data);
-    const message = await loginAction(data);
-    message.success
-      ? toast.success(message.success)
-      : toast.error(message.error);
+  const router = useRouter();
 
+  async function handleSubmitLoginForm({ email, password }: LoginFormData) {
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    if (result?.error) {
+      toast.error("Email ou senha incorretos");
+      return;
+    }
     reset();
+
+    router.replace("/success-login");
   }
 
   useEffect(() => {
@@ -46,7 +55,7 @@ export default function LoginForm() {
       toast.error("Erro no campo de password.");
     }
   }, [errors]);
-  console.log(errors);
+
   return (
     <form
       action=""

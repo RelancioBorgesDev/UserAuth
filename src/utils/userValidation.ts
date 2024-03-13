@@ -23,12 +23,9 @@ export async function getUserById(userId: string) {
   }
 }
 
-export async function getUserByEmail(email: string) {
-  try {
-    const response = await api.get("/user");
-    const dbData: RegisterFormData[] = await response.data;
-    return dbData.find((users) => users.email === email);
-  } catch (error) {
-    console.error("Error checking if email exists:", error);
-  }
+export async function getUserByEmail(email: string | undefined) {
+  const response = await api.get("/user", {
+    params: { email },
+  });
+  return response.data[0];
 }
