@@ -34,24 +34,13 @@ export default function RegisterForm() {
 
   async function handleUserCreation(data: RegisterFormData) {
     try {
-      const message = await registerAction(data);
       const userCreationAction = await createUserAction(data);
       if (userCreationAction.status === 409) {
         return toast.error(userCreationAction.message);
       } else {
-        const newUser: RegisterFormData = {
-          id: uuid(),
-          fullname: data.fullname,
-          username: data.username,
-          email: data.email,
-          phone_number: data.phone_number,
-          password: await encryptPass(data.password),
-        };
-
-        await api.post("user", newUser);
+        reset();
+        return toast.success(userCreationAction.message);
       }
-      message.success && toast.success(message.success);
-      reset();
     } catch (error: any) {
       console.error("Error ao criar user:", error);
     }

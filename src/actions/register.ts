@@ -8,6 +8,7 @@ import { v4 as uuid } from "uuid";
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
 import { api } from "@/libs/axios/axios";
 import { emailAlreadyExists } from "@/utils/userValidation";
+import { encryptPass } from "@/utils/bcrypt";
 
 export const registerAction = async (
   values: z.infer<typeof RegisterSchema>
@@ -29,13 +30,20 @@ export const createUserAction = async (data: RegisterFormData) => {
       message: "O email já existe, por favor escolha um novo email.",
     };
   } else {
+    const newUser: RegisterFormData = {
+      id: uuid(),
+      fullname: data.fullname,
+      username: data.username,
+      email: data.email,
+      phone_number: data.phone_number,
+      password: await encryptPass(data.password),
+    };
+
+    await api.post("user", newUser);
+
     return {
-      status: 500,
-      message:
-        "An error occurred while creating the user. Please try again later.",
+      status: 201,
+      message: "Usuário criado com sucesso",
     };
   }
 };
-
-
-
