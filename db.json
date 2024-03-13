@@ -12,9 +12,17 @@
       "id": "e2d46f03-b74d-402b-b465-2c0618dfe1ff",
       "fullname": "Fred",
       "username": "fredcald",
-      "email": "fedcald@gmail.com",
+      "email": "fredcald@gmail.com",
       "phone_number": "123546546",
       "password": "$2b$10$oMUEiKVNM5HV/2Z6avtdI.Mwh3WBobebe9bTan0rFrcbHM9lSb0Wu"
+    },
+    {
+      "id": "7fb7a91a-88b9-41f5-9fe9-c6c3fb7460f1",
+      "fullname": "Jqt",
+      "username": "jqtsa",
+      "email": "fredcald2@gmail.com",
+      "phone_number": "15245454",
+      "password": "$2b$10$iAV9tnQg0B34x8vj0Hv6IOmKPhtjTqL1syyMHS/Jn0Y7FKHCO/ipO"
     }
   ]
 }

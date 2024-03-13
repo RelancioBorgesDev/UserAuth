@@ -8,8 +8,10 @@ import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { RegisterSchema } from "@/schemas/schemas";
 import { createUserAction, registerAction } from "@/actions/register";
-import { toast } from "sonner";
+import { Toaster, toast } from "sonner";
 import { v4 as uuid } from "uuid";
+import { api } from "@/libs/axios/axios";
+import { encryptPass } from "@/utils/bcrypt";
 
 export interface RegisterFormData {
   id?: string;
@@ -31,23 +33,27 @@ export default function RegisterForm() {
   });
 
   async function handleUserCreation(data: RegisterFormData) {
-    const userData: RegisterFormData = {
-      id: uuid().toString(),
-      fullname: data.fullname,
-      username: data.username,
-      email: data.email,
-      phone_number: data.phone_number,
-      password: data.password,
-    };
-
     try {
-      const message = await registerAction(userData);
-      const newUser = await createUserAction(userData);
+      const message = await registerAction(data);
+      const userCreationAction = await createUserAction(data);
+      if (userCreationAction.status === 409) {
+        return toast.error(userCreationAction.message);
+      } else {
+        const newUser: RegisterFormData = {
+          id: uuid(),
+          fullname: data.fullname,
+          username: data.username,
+          email: data.email,
+          phone_number: data.phone_number,
+          password: await encryptPass(data.password),
+        };
+
+        await api.post("user", newUser);
+      }
       message.success && toast.success(message.success);
       reset();
     } catch (error: any) {
-      console.error("Error creating user:", error);
-      toast.error("Failed to create user");
+      console.error("Error ao criar user:", error);
     }
   }
 
@@ -116,6 +122,8 @@ export default function RegisterForm() {
       <Button variant={"black"} type="submit">
         Continuar <BiRightArrow className="group-hover:scale-110" />
       </Button>
+
+      <Toaster richColors visibleToasts={2} />
     </form>
   );
 }
