@@ -9,6 +9,7 @@ import ErrorMessage from "@/components/error-message/error-message";
 import { RegisterSchema } from "@/schemas/schemas";
 import { createUserAction, registerAction } from "@/actions/register";
 import { Toaster, toast } from "sonner";
+import { redirect } from "next/navigation";
 
 export interface RegisterFormData {
   id?: string | null | undefined;
@@ -36,7 +37,8 @@ export default function RegisterForm() {
         return toast.error(userCreationAction.message);
       } else {
         reset();
-        return toast.success(userCreationAction.message);
+        toast.success(userCreationAction.message);
+        redirect("/auth/sign-in");
       }
     } catch (error: any) {
       console.error("Error ao criar user:", error);
