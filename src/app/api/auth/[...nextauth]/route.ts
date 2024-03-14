@@ -1,7 +1,6 @@
-import { api } from "@/libs/axios/axios";
 import NextAuth, { NextAuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import SignUp from "../../../auth/(auth)/sign-up/page";
+
 
 import { comparePasswords } from "@/utils/bcrypt";
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
