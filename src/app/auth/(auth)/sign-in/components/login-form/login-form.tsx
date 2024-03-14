@@ -43,7 +43,7 @@ export default function LoginForm() {
     }
     reset();
 
-    router.replace("/success-login");
+    router.replace("/dashboard");
   }
 
   useEffect(() => {
