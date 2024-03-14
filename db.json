@@ -63,6 +63,14 @@
       "email": "dazai26@gmail.com",
       "phone_number": "56456456546",
       "password": "$2b$10$UiyrMCLL7nLTiDuYFKkZ2ewDBSm2jfujTGw6h/gVs6TRi5edsHTVO"
+    },
+    {
+      "id": "2acd5e13-bbd7-496d-9046-87996d9fe350",
+      "fullname": "Caio",
+      "username": "qck1",
+      "email": "qck1@gmail.com",
+      "phone_number": "156345456",
+      "password": "$2b$10$vY2UAqkHiR0TdeW6PM/v3uu2z.LZQYwe29bncu9SyYftauDqlIWuy"
     }
   ],
   "login": [

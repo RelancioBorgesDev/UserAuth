@@ -23,7 +23,7 @@ export default function HeaderDropdownAvatar() {
     await signOut({
       redirect: false,
     });
-
+    location.reload();
     router.replace("/");
   }
 
