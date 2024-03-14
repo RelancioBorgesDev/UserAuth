@@ -11,7 +11,7 @@ import { createUserAction, registerAction } from "@/actions/register";
 import { Toaster, toast } from "sonner";
 
 export interface RegisterFormData {
-  id?: string;
+  id?: string | null | undefined;
   fullname: string;
   username: string;
   email: string;
