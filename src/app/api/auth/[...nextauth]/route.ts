@@ -1,7 +1,6 @@
 import NextAuth, { NextAuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-
 import { comparePasswords } from "@/utils/bcrypt";
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
 import { getUserByEmail } from "@/utils/userValidation";
@@ -34,6 +33,20 @@ const nextAuthOptions: NextAuthOptions = {
       },
     }),
   ],
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   pages: {
     signIn: "/auth/sign-in",
   },
