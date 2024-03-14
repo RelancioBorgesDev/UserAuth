@@ -1,12 +1,15 @@
-import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function HeaderAvatar() {
   return (
-    <div className="text-white flex hover:bg-gray-600/25 rounded p-2">
-      <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4"></div>
+    <div className="text-white flex hover:bg-gray-600/25 rounded p-2 gap-4">
+      <Avatar>
+        <AvatarImage src="https://github.com/RelancioBorgesDev.png" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
       <div>
-        <h4>{"Dazai"}</h4>
-        <h5>@{"dazai26"}</h5>
+        <h4>{"Relancio Borges"}</h4>
+        <h5>@{"RelancioBorgesDev"}</h5>
       </div>
     </div>
   );
