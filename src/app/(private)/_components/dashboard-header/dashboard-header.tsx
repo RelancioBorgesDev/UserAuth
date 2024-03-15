@@ -4,6 +4,7 @@ import { Bell, Moon } from "lucide-react";
 import React from "react";
 import HeaderSearch from "./components/header-search/header-search";
 import HeaderDropdownAvatar from "./components/header-dropdown-avatar/header-dropdown-avatar";
+import HeaderDropdownNotifications from "./components/header-dropdown-notifications/header-dropdown-notifications";
 
 export default function DashboardHeader() {
   return (
@@ -14,7 +15,7 @@ export default function DashboardHeader() {
       {/* Avatar */}
       <div className="flex items-center gap-8">
         <Moon className="text-white" />
-        <Bell className="text-white" />
+        <HeaderDropdownNotifications />
         <HeaderDropdownAvatar />
       </div>
     </header>
