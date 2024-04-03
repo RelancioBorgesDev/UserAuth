@@ -7,20 +7,19 @@ import { Input } from "@/components/input/input";
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { RegisterSchema } from "@/schemas/schemas";
-import { createUserAction, registerAction } from "@/actions/register";
+import { createUserAction } from "@/actions/register";
 import { Toaster, toast } from "sonner";
-import { redirect } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 export interface RegisterFormData {
   id?: string | null | undefined;
   fullname: string;
   username: string;
   email: string;
-  phone_number: string;
   password: string;
 }
 
 export default function RegisterForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -38,7 +37,9 @@ export default function RegisterForm() {
       } else {
         reset();
         toast.success(userCreationAction.message);
-        redirect("/auth/sign-in");
+        setTimeout(() => {
+          router.push("/auth/sign-in");
+        }, 1000);
       }
     } catch (error: any) {
       console.error("Error ao criar user:", error);
@@ -85,18 +86,6 @@ export default function RegisterForm() {
         )}
       </InputWrapper>
       <InputWrapper>
-        <label htmlFor="">Número de telefone</label>
-        <Input
-          type="tel"
-          placeholder="Número de telefone"
-          {...register("phone_number")}
-          variant={errors.phone_number ? "error" : undefined}
-        />
-        {errors.phone_number?.message && (
-          <ErrorMessage>{errors.phone_number?.message}</ErrorMessage>
-        )}
-      </InputWrapper>
-      <InputWrapper>
         <label htmlFor="">Senha</label>
         <Input
           type="password"
@@ -107,6 +96,7 @@ export default function RegisterForm() {
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
         )}
       </InputWrapper>
+
       <Button variant={"black"} type="submit">
         Continuar <BiRightArrow className="group-hover:scale-110" />
       </Button>

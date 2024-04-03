@@ -9,68 +9,25 @@
       "password": "$2b$10$zlis57sbQyXpo1n3jeeIPe0mmmflxqE/8MqfHkqJy71yUhlG9FdcS"
     },
     {
-      "id": "e2d46f03-b74d-402b-b465-2c0618dfe1ff",
-      "fullname": "Fred",
-      "username": "fredcald",
-      "email": "fredcald@gmail.com",
-      "phone_number": "123546546",
-      "password": "$2b$10$oMUEiKVNM5HV/2Z6avtdI.Mwh3WBobebe9bTan0rFrcbHM9lSb0Wu"
+      "id": "7309f026-1c1e-4d6a-8467-2ca176a07fad",
+      "fullname": "Relancio",
+      "username": "rbdev05",
+      "email": "rbdev05@gmail.com",
+      "password": "$2b$10$jDSp3RcIK83FxVnrdaIWie02qI5Yt0Y.QO65/5nsNjQIInXmgtjSe"
     },
     {
-      "id": "7fb7a91a-88b9-41f5-9fe9-c6c3fb7460f1",
-      "fullname": "Jqt",
-      "username": "jqtsa",
-      "email": "fredcald2@gmail.com",
-      "phone_number": "15245454",
-      "password": "$2b$10$iAV9tnQg0B34x8vj0Hv6IOmKPhtjTqL1syyMHS/Jn0Y7FKHCO/ipO"
+      "id": "f6320357-e19f-4729-8fda-d51e81831184",
+      "fullname": "Relancio",
+      "username": "arasa",
+      "email": "asasa@asasas.com",
+      "password": "$2b$10$mTARejRIOvQs66.F64dqh./Vt.RNte0ApiaW5/OonPf780ALZoEf6"
     },
     {
-      "id": "41db4ba4-2eea-42a0-a55d-b01574112211",
-      "fullname": "Jqt",
-      "username": "fasasa",
-      "email": "fredcald3@gmail.com",
-      "phone_number": "545345",
-      "password": "$2b$10$QOuf5Qpe/aQM4pCnb8F5YeETgTONY.8OOq54cAjNAJG0DczRIlnsu"
-    },
-    {
-      "id": "6c564121-28ab-4061-b68c-554591c24625",
-      "fullname": "Jay Park",
-      "username": "jp",
-      "email": "jp@gmail.com",
-      "phone_number": "121327868",
-      "password": "$2b$10$Vl5AGquxIBxdsxkVnIXMdOrz.vC1eZXQDHBa4viHcwH1HZoo9LJC."
-    },
-    {
-      "id": "9fd1b1ae-7c13-4f5e-9aa0-589262089f82",
-      "fullname": "José",
-      "username": "joselino",
-      "email": "joselino@gmail.com",
-      "phone_number": "231354545",
-      "password": "$2b$10$SOJFtLfex.t1LccOJAzv.OsRTz1UP55qJl4148ku/x0BWYxEI/62m"
-    },
-    {
-      "id": "db020b23-deb0-4a5d-b43e-5dfa796a2087",
-      "fullname": "Neymar",
-      "username": "njr11",
-      "email": "neymar@gmail.com",
-      "phone_number": "564545",
-      "password": "$2b$10$tstSb4NZ0H8l8nBbhSwg7eQclEAD.7azZXxO7H9mrLYM5hxHO/Fcq"
-    },
-    {
-      "id": "ecce8a6d-9e8f-47e3-8fce-c0ced85fa71b",
-      "fullname": "Osamu Dazai",
-      "username": "dazai26",
-      "email": "dazai26@gmail.com",
-      "phone_number": "56456456546",
-      "password": "$2b$10$UiyrMCLL7nLTiDuYFKkZ2ewDBSm2jfujTGw6h/gVs6TRi5edsHTVO"
-    },
-    {
-      "id": "2acd5e13-bbd7-496d-9046-87996d9fe350",
-      "fullname": "Caio",
-      "username": "qck1",
-      "email": "qck1@gmail.com",
-      "phone_number": "156345456",
-      "password": "$2b$10$vY2UAqkHiR0TdeW6PM/v3uu2z.LZQYwe29bncu9SyYftauDqlIWuy"
+      "id": "0cc5fe8f-ea8d-47a9-a3aa-49288aed11fa",
+      "fullname": "Relancio",
+      "username": "rbdev05@gmail.com",
+      "email": "rbdev@gmail.com",
+      "password": "$2b$10$tdq3Arod8DlxXCmqi8C08..RZFunNNtteRtbCkensI2LPhNfpjMoy"
     }
   ],
   "login": [

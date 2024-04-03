@@ -17,7 +17,6 @@ export const RegisterSchema: z.ZodType<RegisterFormData> = z.object({
     .string()
     .min(1, { message: "Nome de usuário deve ser preenchido" }),
   email: z.string().email({ message: "Email deve ser preenchido" }),
-  phone_number: z.string().min(1),
   password: z
     .string()
     .min(4, { message: "A senha deve ter no mínimo 4 dígitos" })
