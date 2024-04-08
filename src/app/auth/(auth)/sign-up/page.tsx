@@ -15,7 +15,9 @@ export default function SignUp() {
         </h3>
       </Link>
       <div className="bg-white flex flex-col items-center p-12 gap-4 rounded-md shadow-2xl">
-        <Logo variant={"dark"} />
+        <Link href={"/"} className="w-fit">
+          <Logo variant={"dark"} />
+        </Link>
         <h1 className="text-xl font-bold text-zinc-950">Crie a sua conta</h1>
         <h4 className="text-gray-500">
           Seja bem vindo, cadastre-se para começar
