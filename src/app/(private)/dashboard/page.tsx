@@ -11,14 +11,14 @@ import {
 import { getServerSession } from "next-auth";
 import { IoLogoNodejs, IoLogoPython } from "react-icons/io";
 import { IoLogoReact } from "react-icons/io5";
-import BarChartSection from "./_components/bar-chart-section/bar-chart-section";
+import FavoriteLangsChart from "./_components/bar-chart-section/favorite-langs-chart";
 
 export default async function DashboardPage() {
   const session = await getServerSession(nextAuthOptions);
   const fullName = session?.user.fullname;
 
   return (
-    <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-8 p-8">
+    <>
       <h1 className="text-white font-bold text-4xl">
         Seja Bem Vindo, {fullName}
       </h1>
@@ -30,22 +30,19 @@ export default async function DashboardPage() {
 
           <div className="flex items-center w-full gap-8">
             <div className="flex items-center gap-2 px-8 py-2 bg-white text-zinc-950 font-bold rounded-full">
-              <IoLogoNodejs size={44} className="text-green-500" />
-              <span className="text-xl">Node JS</span>
+              <span className="text-xl">Portfolio</span>
             </div>
             <div className="flex items-center gap-2 px-8 py-2 bg-white text-zinc-950 font-bold rounded-full">
-              <IoLogoPython size={44} />
-              <span className="text-xl">Python</span>
+              <span className="text-xl">React Quiz</span>
             </div>
             <div className="flex items-center gap-2 px-8 py-2 bg-white text-zinc-950 font-bold rounded-full">
-              <IoLogoReact size={44} className="text-blue-500" />
-              <span className="text-xl">React</span>
+              <span className="text-xl">Pizza Shop</span>
             </div>
           </div>
         </section>
 
         <div className="flex w-full h-full gap-4">
-          <BarChartSection />
+          <FavoriteLangsChart />
           <section className="w-full h-full bg-zinc-900/95 px-4 py-2 ">
             <Table>
               <TableCaption>Uma lista dos seus projetos</TableCaption>
@@ -86,6 +83,6 @@ export default async function DashboardPage() {
           </section>
         </div>
       </section>
-    </main>
+    </>
   );
 }

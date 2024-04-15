@@ -28,7 +28,9 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
         <DashboardHeader />
         <section className="flex">
           <DashboardAside />
-          <main className="w-full">{children}</main>
+          <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-8 p-8">
+            {children}
+          </main>
         </section>
       </main>
     </main>
