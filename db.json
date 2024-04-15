@@ -1,14 +1,6 @@
 {
   "user": [
     {
-      "id": "eaac0e43-4ec1-43f6-959c-8fdbdba4cefe",
-      "fullname": "Relancio",
-      "username": "rbdev",
-      "email": "3c43f58c3a3b7c3b49b95644b0661ec477ba62edf3eb1db6fecbbb43428f6aa6",
-      "phone_number": "a328c80171be1124be7a80868bde6b5f5e0854893286283b9f0673c6bf568112",
-      "password": "$2b$10$zlis57sbQyXpo1n3jeeIPe0mmmflxqE/8MqfHkqJy71yUhlG9FdcS"
-    },
-    {
       "id": "7309f026-1c1e-4d6a-8467-2ca176a07fad",
       "fullname": "Relancio",
       "username": "rbdev05",
@@ -28,6 +20,13 @@
       "username": "rbdev05@gmail.com",
       "email": "rbdev@gmail.com",
       "password": "$2b$10$tdq3Arod8DlxXCmqi8C08..RZFunNNtteRtbCkensI2LPhNfpjMoy"
+    },
+    {
+      "id": "9a59408b-31f5-4211-a409-d7ec40f6e656",
+      "fullname": "John Doe",
+      "username": "jdoe",
+      "email": "johndoe@gmail.com",
+      "password": "$2b$10$SFDRsZlWIW.2iZDEFUdHJe3XfULoTrsMuPg.RIBGjIYPb/HWTrMDm"
     }
   ],
   "login": [

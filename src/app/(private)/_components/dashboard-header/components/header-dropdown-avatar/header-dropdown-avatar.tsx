@@ -1,5 +1,4 @@
 "use client";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,13 +10,18 @@ import {
 import { LogOut, MessageCircleQuestion, Settings, User } from "lucide-react";
 import Link from "next/link";
 import HeaderAvatar from "../header-avatar/header-avatar";
+import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/api/auth/[...nextauth]/route";
-import { redirect, useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { getSession } from "@/utils/getUserInfo";
 
 export default function HeaderDropdownAvatar() {
   const router = useRouter();
+
+  const [userName, setUserName] = useState<string>();
+  const [userEmail, setUserEmail] = useState<string>();
 
   async function logout() {
     await signOut({
@@ -26,18 +30,30 @@ export default function HeaderDropdownAvatar() {
     location.reload();
     router.replace("/");
   }
+  async function setInfos() {
+    const session = await getSession();
+
+    if (session) {
+      setUserName(session.user.fullname);
+      setUserEmail(session.user.email);
+    }
+  }
+
+  useEffect(() => {
+    setInfos();
+  }, []);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <HeaderAvatar />
+        <HeaderAvatar profile_pic="" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full bg-zinc-950 text-white border-2 border-gray-600/90 p-2 ">
         <DropdownMenuLabel className="flex gap-2">
-          <HeaderAvatar />
+          <HeaderAvatar profile_pic="" />
           <div>
-            <h4>{"Relancio Borges"}</h4>
-            <h5 className="font-light leading-5">@{"RelancioBorgesDev"}</h5>
+            <h4>{userName}</h4>
+            <h5 className="font-light leading-5">@{userEmail}</h5>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

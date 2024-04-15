@@ -11,7 +11,6 @@ import {
 import { getServerSession } from "next-auth";
 import { IoLogoNodejs, IoLogoPython } from "react-icons/io";
 import { IoLogoReact } from "react-icons/io5";
-import { DonutChart, Legend } from "@tremor/react";
 import BarChartSection from "./_components/bar-chart-section/bar-chart-section";
 
 export default async function DashboardPage() {
