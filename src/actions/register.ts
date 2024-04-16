@@ -4,7 +4,7 @@ import * as z from "zod";
 import { RegisterSchema } from "@/schemas/schemas";
 import { v4 as uuid } from "uuid";
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
-import { api } from "@/libs/axios/axios";
+import { api } from "@/api/axios/axios";
 import { emailAlreadyExists } from "@/utils/userValidation";
 import { encryptPass } from "@/utils/bcrypt";
 import { ResponseObjectType, responseObject } from "@/utils/responseObject";

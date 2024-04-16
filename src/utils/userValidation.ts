@@ -1,5 +1,5 @@
 import { RegisterFormData } from "@/app/auth/(auth)/sign-up/_components/register-form/register-form";
-import { api } from "@/libs/axios/axios";
+import { api } from "@/api/axios/axios";
 
 export async function emailAlreadyExists(email: string): Promise<boolean> {
   try {
