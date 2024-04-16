@@ -23,12 +23,12 @@ export default async function DashboardPage() {
         Seja Bem Vindo, {fullName}
       </h1>
       <section className="flex flex-col gap-5 text-white h-screen ">
-        <section className="h-44 flex flex-col justify-around px-4 bg-zinc-900/95 rounded-lg">
+        <section className="h-44 flex flex-col justify-around px-4 bg-zinc-900/95 rounded-lg max-lg:h-full gap-4">
           <p className="text-xl font-semibold">
             Veja os seus principais projetos
           </p>
 
-          <div className="flex items-center w-full gap-8">
+          <div className="flex flex-wrap items-center w-full gap-8">
             <div className="flex items-center gap-2 px-8 py-2 bg-white text-zinc-950 font-bold rounded-full">
               <span className="text-xl">Portfolio</span>
             </div>
@@ -41,7 +41,7 @@ export default async function DashboardPage() {
           </div>
         </section>
 
-        <div className="flex w-full h-full gap-4">
+        <div className="flex w-full h-full gap-4 max-lg:flex-col">
           <FavoriteLangsChart />
           <section className="w-full h-full bg-zinc-900/95 px-4 py-2 ">
             <Table>

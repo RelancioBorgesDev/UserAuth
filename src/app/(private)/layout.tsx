@@ -26,7 +26,7 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
       <main className="w-full h-screen flex flex-col">
         {/* Dashboard Header */}
         <DashboardHeader />
-        <section className="flex">
+        <section className="flex max-lg:flex-col">
           <DashboardAside />
           <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-8 p-8">
             {children}

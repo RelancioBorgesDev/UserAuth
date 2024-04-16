@@ -32,9 +32,9 @@ export default function Repos() {
   };
   Chart.register(BarElement, CategoryScale, LinearScale, ArcElement);
   return (
-    <section className="w-full flex flex-col gap-8 px-8 py-4">
-      <header className="flex items-center gap-8">
-        <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4">
+    <section className="w-full flex flex-col  gap-8 px-8 py-4">
+      <header className="flex items-center gap-8 max-lg:grid max-lg:grid-cols-2 max-lg:content-center max-sm:grid-cols-1">
+        <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4 ">
           <FolderGit className="text-white" size={32} />
           <span className="text-xl">96 Repositórios</span>
         </div>

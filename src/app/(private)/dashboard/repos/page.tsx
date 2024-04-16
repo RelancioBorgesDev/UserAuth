@@ -13,7 +13,7 @@ export default function Repos() {
           type="text"
           placeholder="Pesquise um repositorio"
         />
-        <ul className="flex items-center gap-4">
+        <ul className="flex max-lg:flex-wrap items-center gap-4">
           <li>
             <ComboboxFilter />
           </li>

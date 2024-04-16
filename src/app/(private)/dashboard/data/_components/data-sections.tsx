@@ -34,7 +34,7 @@ export default function DataSections({}: DataSectionsProps) {
         dataSection={dataSection}
         handleDataSection={handleDataSection}
       />
-      <section>{renderSection()}</section>
+      <section className="max-lg:w-full">{renderSection()}</section>
     </>
   );
 }

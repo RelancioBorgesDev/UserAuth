@@ -12,8 +12,8 @@ import React from "react";
 
 export default function Profile() {
   return (
-    <section className="w-full flex flex-col gap-8 px-8 py-4">
-      <div className="flex flex-col items-center gap-2 bg-zinc-800 p-4 rounded-lg h-fit">
+    <section className="w-full flex flex-col gap-8 px-8 py-4 max-lg:px-2">
+      <div className="w-full flex flex-col items-center gap-2 bg-zinc-800 p-4 rounded-lg h-fit">
         <header className="flex flex-col items-center gap-4">
           <Image
             className="rounded-full"

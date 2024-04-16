@@ -4,7 +4,7 @@ import React from "react";
 
 export default function HeaderSearch() {
   return (
-    <div className="flex items-center rounded-l-lg w-fit">
+    <div className="flex items-center rounded-l-lg w-fit max-md:hidden">
       <Input
         className="w-96 bg-transparent text-white border-2 border-zinc-600 rounded-t-none rounded-b-none rounded-l-xl border-r-0"
         placeholder="Pesquise um projeto"
