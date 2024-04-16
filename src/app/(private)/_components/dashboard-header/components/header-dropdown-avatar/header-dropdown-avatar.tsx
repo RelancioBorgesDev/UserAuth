@@ -57,21 +57,21 @@ export default function HeaderDropdownAvatar() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <Link href={"/settings/profile"}>
+        <Link href={"/dashboard/settings/profile"}>
           <DropdownMenuItem className="flex items-center gap-2">
             <User />
             Perfil
           </DropdownMenuItem>
         </Link>
 
-        <Link href={"/settings/help"}>
+        <Link href={"/dashboard/settings/help"}>
           <DropdownMenuItem className="flex items-center gap-2">
             <MessageCircleQuestion />
             Ajuda
           </DropdownMenuItem>
         </Link>
 
-        <Link href={"/settings/setting"}>
+        <Link href={"/dashboard/settings/setting"}>
           <DropdownMenuItem className="flex items-center gap-2">
             <Settings />
             Configurações
@@ -79,7 +79,7 @@ export default function HeaderDropdownAvatar() {
         </Link>
         <DropdownMenuSeparator />
 
-        <Link href={"/settings/setting"}>
+        <Link href={"/dashboard/settings/setting"}>
           <DropdownMenuItem
             className="flex items-center gap-2 bg-red-500 focus:bg-red-600"
             onClick={logout}
