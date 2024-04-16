@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import DashboardHeader from "./_components/dashboard-header/dashboard-header";
 import DashboardAside from "./_components/dashboard-aside/dashboard-aside";
+import DashboardBreadcrumb from "./_components/dashboard-breadcrumb/dashboard-breadcrumb";
 
 interface PrivateLayoutProps {
   children: ReactNode;
@@ -28,7 +29,8 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
         <DashboardHeader />
         <section className="flex max-lg:flex-col">
           <DashboardAside />
-          <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-8 p-8">
+          <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-2 px-8 py-2">
+            <DashboardBreadcrumb />
             {children}
           </main>
         </section>
