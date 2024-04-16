@@ -1,7 +1,7 @@
 import React from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 
 const logoVariants = cva(
   "w-fit px-4 py-2 rounded-full font-bold text-2xl tracking-wide",

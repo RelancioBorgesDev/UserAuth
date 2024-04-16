@@ -1,5 +1,5 @@
 import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
 
 const separatorVariants = cva(" border-2 border-gray-200", {

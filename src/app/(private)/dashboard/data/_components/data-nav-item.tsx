@@ -1,5 +1,5 @@
 import React, { ComponentProps, ReactNode } from "react";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 
 const dataNavItemVariants = cva(

@@ -1,6 +1,6 @@
 import React, { ComponentProps, forwardRef } from "react";
 import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 
 const inputVariants = cva("border-2 p-2 shadow-sm rounded outline-none", {
   variants: {

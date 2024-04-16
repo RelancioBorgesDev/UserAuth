@@ -1,4 +1,4 @@
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
 
