@@ -57,13 +57,6 @@ export default function HeaderDropdownAvatar() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <Link href={"/dashboard/settings/profile"}>
-          <DropdownMenuItem className="flex items-center gap-2">
-            <User />
-            Perfil
-          </DropdownMenuItem>
-        </Link>
-
         <Link href={"/dashboard/settings/help"}>
           <DropdownMenuItem className="flex items-center gap-2">
             <MessageCircleQuestion />
