@@ -11,7 +11,6 @@ import SocialLoginOption from "@/components/social-login-option/social-login-opt
 import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 import { LoginSchema } from "@/schemas/schemas";
-import { loginAction } from "@/actions/login";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 export interface LoginFormData {
@@ -86,11 +85,6 @@ export default function LoginForm() {
       </Button>
       <Separator orientation={"horizontal"} />
       <div className="flex flex-col justify-around w-full gap-2">
-        <SocialLoginOption
-          href="/"
-          icon={FaGoogle}
-          text="Faça login com o Google"
-        />
         <SocialLoginOption
           href="/"
           icon={FaGithub}

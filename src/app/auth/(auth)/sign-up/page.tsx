@@ -1,10 +1,11 @@
-import { FaGithub, FaGoogle } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 
 import Link from "next/link";
 import SocialLoginOption from "@/components/social-login-option/social-login-option";
 import Logo from "@/components/logo/logo";
 import Separator from "@/components/separator/separator";
 import RegisterForm from "./_components/register-form/register-form";
+import AuthOptions from "./_components/auth-options/auth-options";
 
 export default function SignUp() {
   return (
@@ -23,10 +24,7 @@ export default function SignUp() {
           Seja bem vindo, cadastre-se para começar
         </h4>
         {/* OAuth Options */}
-        <div className="w-full flex items-center justify-around gap-4">
-          <SocialLoginOption icon={FaGoogle} href="#" text="Google" />
-          <SocialLoginOption icon={FaGithub} href="#" text="Github" />
-        </div>
+        <AuthOptions />
         {/* Separating the two types of auth */}
         <div className="w-full flex items-center gap-4">
           <Separator orientation={"horizontal"} />
