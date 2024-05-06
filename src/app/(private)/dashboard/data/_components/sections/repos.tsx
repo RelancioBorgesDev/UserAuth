@@ -1,3 +1,5 @@
+import { useGithubDataContext } from "@/contexts/GithubDataContext";
+import axios from "axios";
 import {
   ArcElement,
   BarElement,
@@ -6,12 +8,62 @@ import {
   LinearScale,
 } from "chart.js";
 import { BadgeAlert, Eye, FolderGit, Star } from "lucide-react";
-import { useState } from "react";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import { Doughnut } from "react-chartjs-2";
+
+interface ReposResponse {
+  stargazers_count: number;
+  open_issues_count: number;
+  watchers_count: number;
+  language: string;
+}
 
 export default function Repos() {
+  const { userData } = useGithubDataContext();
+  const { repos_url } = userData;
+  const [repos, setRepos] = useState<ReposResponse[]>([]);
+  const [stars, setStars] = useState(0);
+  const [watchers, setWatchers] = useState(0);
+  const [issues, setIssues] = useState(0);
+  const [languagues, setLanguages] = useState([""]);
+  useEffect(() => {
+    async function fetchRepos() {
+      try {
+        const response = await axios.get(repos_url);
+        setRepos(response.data);
+      } catch (error) {
+        console.error("Error fetching repositories:", error);
+      }
+    }
+
+    if (repos_url) {
+      fetchRepos();
+    }
+  }, [repos_url]);
+
+  useEffect(() => {
+    let totalStars = 0;
+    let totalWatchers = 0;
+    let totalIssues = 0;
+    const allLanguages: string[] = [];
+
+    repos.forEach((repo) => {
+      totalStars += repo.stargazers_count;
+      totalWatchers += repo.watchers_count;
+      totalIssues += repo.open_issues_count;
+      if (repo.language && !allLanguages.includes(repo.language)) {
+        allLanguages.push(repo.language);
+      }
+    });
+
+    setStars(totalStars);
+    setWatchers(totalWatchers);
+    setIssues(totalIssues);
+    setLanguages(allLanguages);
+  }, [repos]);
+
   const [data, setData] = useState({
-    labels: ["JavaScript", "Java", "Python", "C#"],
+    labels: languagues,
     datasets: [
       {
         label: "Linguagens usadas",
@@ -36,19 +88,19 @@ export default function Repos() {
       <header className="flex items-center gap-8 max-lg:grid max-lg:grid-cols-2 max-lg:content-center max-sm:grid-cols-1">
         <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4 ">
           <FolderGit className="text-white" size={32} />
-          <span className="text-xl">96 Repositórios</span>
+          <span className="text-xl">{repos.length} Repositórios</span>
         </div>
         <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4">
           <Star className="text-white" size={32} />
-          <span className="text-xl">120 Stars</span>
+          <span className="text-xl">{stars} Stars</span>
         </div>
         <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4">
           <Eye className="text-white" size={32} />
-          <span className="text-xl">120 Watchers</span>
+          <span className="text-xl">{watchers} Watchers</span>
         </div>
         <div className="w-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4">
           <BadgeAlert className="text-white" size={32} />
-          <span className="text-xl">120 Issues</span>
+          <span className="text-xl">{issues} Issues</span>
         </div>
       </header>
       <section>
