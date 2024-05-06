@@ -10,16 +10,16 @@ import Button from "@/components/button/button";
 import ErrorMessage from "@/components/error-message/error-message";
 
 interface RegisterFormData {
-  fullname: string;
-  username: string;
+  name: string;
+  userName: string;
   email: string;
   phone_number: string;
   password: string;
 }
 
 const SignUpSchema: z.ZodType<RegisterFormData> = z.object({
-  fullname: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
-  username: z
+  name: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
+  userName: z
     .string()
     .min(1, { message: "Nome de usuário deve ser preenchido" }),
   email: z.string().email({ message: "Email deve ser preenchido" }),
@@ -53,22 +53,22 @@ export default function RegisterForm() {
         <label htmlFor="">Nome completo</label>
         <Input
           type="text"
-          {...register("fullname")}
-          variant={errors.fullname ? "error" : undefined}
+          {...register("name")}
+          variant={errors.name ? "error" : undefined}
         />
-        {errors.fullname?.message && (
-          <ErrorMessage>{errors.fullname?.message}</ErrorMessage>
+        {errors.name?.message && (
+          <ErrorMessage>{errors.name?.message}</ErrorMessage>
         )}
       </InputWrapper>
       <InputWrapper>
         <label htmlFor="">Nome de usuário</label>
         <Input
           type="text"
-          {...register("username")}
-          variant={errors.username ? "error" : undefined}
+          {...register("userName")}
+          variant={errors.userName ? "error" : undefined}
         />
-        {errors.username?.message && (
-          <ErrorMessage>{errors.username?.message}</ErrorMessage>
+        {errors.userName?.message && (
+          <ErrorMessage>{errors.userName?.message}</ErrorMessage>
         )}
       </InputWrapper>
       <InputWrapper>

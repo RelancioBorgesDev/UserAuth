@@ -12,8 +12,8 @@ import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 export interface RegisterFormData {
   id?: string | null | undefined;
-  fullname: string;
-  username: string;
+  name: string;
+  userName: string;
   email: string;
   password: string;
 }
@@ -56,22 +56,22 @@ export default function RegisterForm() {
         <label htmlFor="">Nome completo</label>
         <Input
           type="text"
-          {...register("fullname")}
-          variant={errors.fullname ? "error" : undefined}
+          {...register("name")}
+          variant={errors.name ? "error" : undefined}
         />
-        {errors.fullname?.message && (
-          <ErrorMessage>{errors.fullname?.message}</ErrorMessage>
+        {errors.name?.message && (
+          <ErrorMessage>{errors.name?.message}</ErrorMessage>
         )}
       </InputWrapper>
       <InputWrapper>
         <label htmlFor="">Nome de usuário</label>
         <Input
           type="text"
-          {...register("username")}
-          variant={errors.username ? "error" : undefined}
+          {...register("userName")}
+          variant={errors.userName ? "error" : undefined}
         />
-        {errors.username?.message && (
-          <ErrorMessage>{errors.username?.message}</ErrorMessage>
+        {errors.userName?.message && (
+          <ErrorMessage>{errors.userName?.message}</ErrorMessage>
         )}
       </InputWrapper>
       <InputWrapper>
