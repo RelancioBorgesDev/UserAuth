@@ -7,13 +7,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, MessageCircleQuestion, Settings, User } from "lucide-react";
+import { LogOut, MessageCircleQuestion, Settings } from "lucide-react";
 import Link from "next/link";
 import HeaderAvatar from "../header-avatar/header-avatar";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { nextAuthOptions } from "@/app/api/auth/[...nextauth]/route";
 import { useEffect, useState } from "react";
 import { getSession } from "@/utils/getUserInfo";
 
@@ -34,7 +32,7 @@ export default function HeaderDropdownAvatar() {
     const session = await getSession();
 
     if (session) {
-      setUserName(session.user.fullname);
+      setUserName(session.user.name);
       setUserEmail(session.user.email);
     }
   }

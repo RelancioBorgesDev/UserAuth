@@ -33,10 +33,9 @@ export const createUserAction = async (
   } else {
     const newUser: RegisterFormData = {
       id: uuid(),
-      fullname: data.fullname,
-      username: data.username,
+      name: data.name,
+      userName: data.userName,
       email: data.email,
-      phone_number: data.phone_number,
       password: await encryptPass(data.password),
     };
 

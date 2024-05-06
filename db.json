@@ -2,37 +2,38 @@
   "user": [
     {
       "id": "7309f026-1c1e-4d6a-8467-2ca176a07fad",
-      "fullname": "Relancio",
-      "username": "rbdev05",
+      "name": "Relancio",
+      "userName": "rbdev05",
       "email": "rbdev05@gmail.com",
       "password": "$2b$10$jDSp3RcIK83FxVnrdaIWie02qI5Yt0Y.QO65/5nsNjQIInXmgtjSe"
     },
     {
       "id": "f6320357-e19f-4729-8fda-d51e81831184",
-      "fullname": "Relancio",
-      "username": "arasa",
+      "name": "Relancio",
+      "userName": "arasa",
       "email": "asasa@asasas.com",
       "password": "$2b$10$mTARejRIOvQs66.F64dqh./Vt.RNte0ApiaW5/OonPf780ALZoEf6"
     },
     {
       "id": "0cc5fe8f-ea8d-47a9-a3aa-49288aed11fa",
-      "fullname": "Relancio",
-      "username": "rbdev05@gmail.com",
+      "name": "Relancio",
+      "userName": "rbdev05@gmail.com",
       "email": "rbdev@gmail.com",
       "password": "$2b$10$tdq3Arod8DlxXCmqi8C08..RZFunNNtteRtbCkensI2LPhNfpjMoy"
     },
     {
       "id": "9a59408b-31f5-4211-a409-d7ec40f6e656",
-      "fullname": "John Doe",
-      "username": "jdoe",
+      "name": "John Doe",
+      "userName": "jdoe",
       "email": "johndoe@gmail.com",
       "password": "$2b$10$SFDRsZlWIW.2iZDEFUdHJe3XfULoTrsMuPg.RIBGjIYPb/HWTrMDm"
-    }
-  ],
-  "login": [
+    },
     {
-      "email": "fredcald2@gmail.com",
-      "password": "$2b$10$iAV9tnQg0B34x8vj0Hv6IOmKPhtjTqL1syyMHS/Jn0Y7FKHCO/ipO"
+      "id": "8ae419cc-60e8-49ec-a102-3e64535c825b",
+      "name": "Sennaa",
+      "userName": "asenna",
+      "email": "asenna@gmail.com",
+      "password": "$2b$10$KbRXPB6tPaN2qTF/C.e.D.zy.P/xnaPu7.NPYigl4j2.gg0aGymPa"
     }
   ]
 }

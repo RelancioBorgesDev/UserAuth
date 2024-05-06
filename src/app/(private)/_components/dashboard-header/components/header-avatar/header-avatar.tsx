@@ -8,9 +8,14 @@ interface HeaderAvatarProps {
 
 export default function HeaderAvatar({ profile_pic }: HeaderAvatarProps) {
   const [userInitials, setUserInitials] = useState<string | undefined>("");
+
   async function getUserName() {
     const session = await getSession();
-    const userName = session?.user.fullname;
+
+    let userName = "";
+    if (session) {
+      userName = session.user.name;
+    }
 
     setUserInitials(userName?.split("")[0]);
   }
