@@ -12,8 +12,8 @@ export const LoginSchema: z.ZodType<LoginFormData> = z.object({
 
 export const RegisterSchema: z.ZodType<RegisterFormData> = z.object({
   id: z.string().nullable().optional(),
-  fullname: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
-  username: z
+  name: z.string().min(1, { message: "Nome completo deve ser preenchido" }),
+  userName: z
     .string()
     .min(1, { message: "Nome de usuário deve ser preenchido" }),
   email: z.string().email({ message: "Email deve ser preenchido" }),
