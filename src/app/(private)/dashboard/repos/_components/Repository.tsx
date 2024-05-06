@@ -19,6 +19,22 @@ export default function Repository({
   watchers_count,
   updated_at,
 }: RepositoryProps) {
+  function formatUpdatedAt(updatedAt: string): string {
+    const date = new Date(updatedAt);
+    const now = new Date();
+    const differenceInMilliseconds = now.getTime() - date.getTime();
+    const differenceInYears =
+      differenceInMilliseconds / (1000 * 60 * 60 * 24 * 365);
+
+    if (differenceInYears >= 1) {
+      const roundedYears = Math.floor(differenceInYears);
+      return `Atualizada há mais de um ano (${roundedYears} anos)`;
+    } else {
+      return `Atualizada recentemente`;
+    }
+  }
+
+  const formattedDate = formatUpdatedAt(updated_at);
   return (
     <li className="border-2 border-white rounded-md px-6 py-4 flex flex-col gap-4 transition-all ease-in-out duration-500 hover:bg-white/85 hover:text-zinc-950 hover:border-white/85 cursor-pointer">
       <header className="flex justify-between ">
@@ -45,7 +61,7 @@ export default function Repository({
           <span className="inline-block w-4 h-4 rounded-full bg-blue-500 border-2 border-blue-500"></span>
           <span>{languague}</span>
         </div>
-        <span>Atualizado 20 horas atrás</span>
+        <span>{formattedDate}</span>
       </footer>
     </li>
   );
