@@ -7,7 +7,7 @@ import HeaderDropdownNotifications from "./components/header-dropdown-notificati
 
 export default function DashboardHeader() {
   return (
-    <header className="border-b-2 border-gray-600/90 w-full py-2 px-5 flex items-center justify-between">
+    <header className="border-b-2 border-zinc-950 w-full py-2 px-5 flex items-center justify-between ">
       <Logo variant={"white"} />
       <HeaderSearch />
       <div className="flex items-center gap-8">

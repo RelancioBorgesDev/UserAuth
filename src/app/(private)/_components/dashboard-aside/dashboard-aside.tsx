@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function DashboardAside() {
   const currentPath = usePathname();
   return (
-    <aside className="w-96 border-r-2 border-gray-600/90 h-[calc(100vh-82px)] flex flex-col gap-4  max-lg:w-full max-lg:h-fit max-lg:py-0">
+    <aside className="w-96  h-[calc(100vh-82px)] flex flex-col gap-4  max-lg:w-full max-lg:h-fit max-lg:py-0 fixed z-50 ">
       <AsideNav
         href="/dashboard"
         icon={Home}

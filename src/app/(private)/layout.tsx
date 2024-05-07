@@ -23,18 +23,17 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
   }
 
   return (
-    <main className="h-screen bg-zinc-950">
-      <main className="w-full h-screen flex flex-col">
-        {/* Dashboard Header */}
-        <DashboardHeader />
-        <section className="flex max-lg:flex-col">
-          <DashboardAside />
-          <main className="w-full h-[calc(100vh-82px)] flex flex-col gap-2 px-8 py-2">
-            <DashboardBreadcrumb />
-            {children}
-          </main>
-        </section>
-      </main>
+    <main className="h-screen bg-zinc-950 flex flex-col">
+      {/* Dashboard Header */}
+      <DashboardHeader />
+      <section className="flex flex-1">
+        {/* Dashboard Aside */}
+        <DashboardAside />
+        <main className="flex flex-col flex-1 max-w-full ml-[384px] px-4 py-4">
+          <DashboardBreadcrumb />
+          {children}
+        </main>
+      </section>
     </main>
   );
 }

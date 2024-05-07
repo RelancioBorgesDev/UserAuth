@@ -19,7 +19,7 @@ export default async function RootLayout({
   const session = await getSession();
   return (
     <html lang="pt-br" className={lexend.className}>
-      <body className={"bg-gradient-to-b from-zinc-950 to-white h-screen"}>
+      <body className={"bg-zinc-950 h-screen"}>
         <main className="h-screen">
           <NextAuthSessionProvider session={session}>
             <GithubDataContextProvider>{children}</GithubDataContextProvider>
