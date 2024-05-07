@@ -56,9 +56,15 @@ interface UserDataProps {
     private_repos: number;
   };
 }
-
+interface ReposResponse {
+  stargazers_count: number;
+  open_issues_count: number;
+  watchers_count: number;
+  language: string;
+}
 interface IGithubDataContext {
   userData: UserDataProps;
+  repos: ReposResponse[];
 }
 
 interface GithubDataContextProviderProps {
@@ -71,33 +77,50 @@ export function GithubDataContextProvider({
   children,
 }: GithubDataContextProviderProps) {
   const [userData, setUserData] = useState<UserDataProps>({} as UserDataProps);
+  const [repos, setRepos] = useState<ReposResponse[]>([]);
 
-  async function getAcessToken() {
+  async function getAccessToken() {
     const session = await getSession();
     return session?.accessToken!;
   }
 
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const accessToken = await getAcessToken();
-        const response = await axios.get("https://api.github.com/user", {
-          headers: {
-            Authorization: `token ${accessToken}`,
-          },
-        });
-
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Error fetching user data from GitHub:", error);
-      }
+  async function fetchRepos(userData: UserDataProps) {
+    try {
+      const { repos_url } = userData;
+      const response = await axios.get(repos_url);
+      setRepos(response.data);
+    } catch (error) {
+      console.error("Error fetching repositories:", error);
     }
+  }
 
+  async function fetchUserData() {
+    try {
+      const accessToken = await getAccessToken();
+      const response = await axios.get("https://api.github.com/user", {
+        headers: {
+          Authorization: `token ${accessToken}`,
+        },
+      });
+
+      setUserData(response.data);
+    } catch (error) {
+      console.error("Error fetching user data from GitHub:", error);
+    }
+  }
+
+  useEffect(() => {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    if (userData) {
+      fetchRepos(userData);
+    }
+  }, [userData]);
+
   return (
-    <GithubDataContext.Provider value={{ userData }}>
+    <GithubDataContext.Provider value={{ userData, repos }}>
       {children}
     </GithubDataContext.Provider>
   );
