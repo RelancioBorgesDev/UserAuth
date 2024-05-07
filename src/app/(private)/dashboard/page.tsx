@@ -12,11 +12,6 @@ import { IoLogoReact } from "react-icons/io5";
 import FavoriteLangsChart from "./_components/bar-chart-section/favorite-langs-chart";
 import { getSession } from "@/utils/getUserInfo";
 import AuthOptions from "@/app/auth/(auth)/sign-up/_components/auth-options/auth-options";
-import {
-  GithubDataContext,
-  useGithubDataContext,
-} from "@/contexts/GithubDataContext";
-import { useContext, useEffect } from "react";
 
 export default async function DashboardPage() {
   const session = await getSession();
@@ -92,7 +87,7 @@ export default async function DashboardPage() {
         ) : (
           <div
             className="flex flex-col gap-4 items-center justify-center 
-            h-full"
+            h-96"
           >
             <h1 className="text-5xl">
               Por favor, se conecte com o Github para visualizar seu dados
