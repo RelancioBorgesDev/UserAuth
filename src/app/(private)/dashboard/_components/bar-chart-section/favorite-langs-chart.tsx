@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Bar, Doughnut, Pie } from "react-chartjs-2";
 import {
   Chart,
@@ -10,6 +10,17 @@ import {
   Legend,
 } from "chart.js";
 import { Colors } from "chart.js";
+import { useGithubDataContext } from "@/contexts/GithubDataContext";
+import { generateColors } from "@/utils/chartColors";
+
+interface DataType {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+  }[];
+}
 
 export default function FavoriteLangsChart() {
   Chart.register(
@@ -20,39 +31,34 @@ export default function FavoriteLangsChart() {
     Colors,
     Legend
   );
-
-  const generateColors = (languages: string[]) => {
-    const colors: string[] = [];
-    languages.forEach((language) => {
-      const color = getColorForLanguage(language);
-      colors.push(color);
-    });
-    return colors;
-  };
-
-  const getColorForLanguage = (language: string) => {
-    switch (language) {
-      case "JavaScript":
-        return "rgba(255, 206, 86)";
-      case "Java":
-        return "#C83E4D";
-      case "Python":
-        return "rgba(75, 192, 192)";
-      default:
-        return "rgba(0, 0, 0)";
-    }
-  };
-
-  const [data, setData] = useState({
-    labels: ["JavaScript", "Java", "Python"],
+  const { repos } = useGithubDataContext();
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [data, setData] = useState<DataType>({
+    labels: [],
     datasets: [
       {
         label: "Favorite Coding Languages",
-        data: [10, 7, 8],
-        backgroundColor: generateColors(["JavaScript", "Java", "Python"]),
+        data: [],
+        backgroundColor: [],
       },
     ],
   });
+
+  useEffect(() => {
+    const allLanguages: { [key: string]: number } = {};
+
+    repos.forEach((repo) => {
+      if (repo.language) {
+        allLanguages[repo.language] = (allLanguages[repo.language] || 0) + 1;
+      }
+    });
+    const sortedLanguages = Object.keys(allLanguages).sort(
+      (a, b) => allLanguages[b] - allLanguages[a]
+    );
+    const limitedLanguages = sortedLanguages.slice(0, 5);
+
+    setLanguages(limitedLanguages);
+  }, [repos]);
 
   const options = {
     plugins: {
@@ -64,10 +70,26 @@ export default function FavoriteLangsChart() {
     },
   };
 
+  useEffect(() => {
+    async function getLanguague() {}
+    setData({
+      labels: languages,
+      datasets: [
+        {
+          label: "Favorite Coding Languages",
+          data: languages.map(
+            (lang) => repos.filter((repo) => repo.language === lang).length
+          ),
+          backgroundColor: generateColors(languages),
+        },
+      ],
+    });
+  }, [languages, repos]);
+
   return (
-    <section className="w-full h-full text-white px-4 py-2 bg-zinc-900/95 flex flex-col items-center gap-16">
+    <section className="w-full h-full text-white px-4 py-2 bg-zinc-900/95 flex flex-col items-center gap-8">
       <p className="text-xl">Principais linguagens utilizadas</p>
-      <div className=" flex items-center justify-center text-white">
+      <div className="flex items-center justify-center text-white">
         <Pie
           data={data}
           options={options}

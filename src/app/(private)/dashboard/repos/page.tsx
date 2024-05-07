@@ -17,20 +17,9 @@ interface RepoResponse {
   updated_at: string;
 }
 export default function Repos() {
-  const { userData } = useGithubDataContext();
-  const { repos_url } = userData;
+  const { repos } = useGithubDataContext();
 
-  const [repo, setRepo] = useState<RepoResponse[]>([]);
   const [hasToken, setHasToken] = useState<boolean>(false);
-
-  async function fetchRepos() {
-    try {
-      const response = await axios.get(repos_url);
-      setRepo(response.data);
-    } catch (error) {
-      console.error("Error fetching repositories:", error);
-    }
-  }
 
   useEffect(() => {
     async function fetchData() {
@@ -38,18 +27,19 @@ export default function Repos() {
       const accToken = session?.accessToken;
       if (accToken) {
         setHasToken(true);
-        fetchRepos();
       }
     }
 
     fetchData();
-  }, [repos_url]);
+  }, []);
 
   return (
     <div className="text-white flex flex-col gap-4">
       {!hasToken ? (
         <div className="flex flex-col items-center justify-center gap-8 h-96">
-          <h1 className="text-5xl font-bold">Por favor conecte no github para ver seus repositorios</h1>
+          <h1 className="text-5xl font-bold">
+            Por favor conecte no github para ver seus repositorios
+          </h1>
           <button className=" px-4 py-2 rounded-lg text-white">
             <AuthOptions />
           </button>
@@ -77,7 +67,7 @@ export default function Repos() {
           </header>
           <section>
             <ul className="flex flex-col gap-4">
-              {repo.map(
+              {repos.map(
                 ({
                   name,
                   description,

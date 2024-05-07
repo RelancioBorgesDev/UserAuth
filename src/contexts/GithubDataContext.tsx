@@ -57,6 +57,11 @@ interface UserDataProps {
   };
 }
 interface ReposResponse {
+  name: string;
+  description: string;
+  languague: string;
+  updated_at: string;
+  visibility: string;
   stargazers_count: number;
   open_issues_count: number;
   watchers_count: number;

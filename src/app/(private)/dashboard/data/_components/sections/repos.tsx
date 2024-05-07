@@ -11,35 +11,12 @@ import { BadgeAlert, Eye, FolderGit, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-interface ReposResponse {
-  stargazers_count: number;
-  open_issues_count: number;
-  watchers_count: number;
-  language: string;
-}
-
 export default function Repos() {
-  const { userData } = useGithubDataContext();
-  const { repos_url } = userData;
-  const [repos, setRepos] = useState<ReposResponse[]>([]);
+  const { repos } = useGithubDataContext();
   const [stars, setStars] = useState(0);
   const [watchers, setWatchers] = useState(0);
   const [issues, setIssues] = useState(0);
   const [languagues, setLanguages] = useState([""]);
-  useEffect(() => {
-    async function fetchRepos() {
-      try {
-        const response = await axios.get(repos_url);
-        setRepos(response.data);
-      } catch (error) {
-        console.error("Error fetching repositories:", error);
-      }
-    }
-
-    if (repos_url) {
-      fetchRepos();
-    }
-  }, [repos_url]);
 
   useEffect(() => {
     let totalStars = 0;
