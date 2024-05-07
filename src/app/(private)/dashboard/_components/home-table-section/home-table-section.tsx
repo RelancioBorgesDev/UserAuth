@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useGithubDataContext } from "@/contexts/GithubDataContext";
+import { formatDate } from "@/utils/formatDate";
 import React, { useEffect, useState } from "react";
 
 type ProjectDataType = {
@@ -30,14 +31,7 @@ export default function HomeTableSection() {
     );
   }, [repos]);
 
-  function formatDate(data: string) {
-    const dataObj = new Date(data);
-    const dia = dataObj.getDate().toString().padStart(2, "0");
-    const mes = (dataObj.getMonth() + 1).toString().padStart(2, "0");
-    const ano = dataObj.getFullYear();
 
-    return `${dia}/${mes}/${ano}`;
-  }
 
   return (
     <Table>

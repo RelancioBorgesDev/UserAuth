@@ -1,5 +1,6 @@
 import Separator from "@/components/separator/separator";
 import { useGithubDataContext } from "@/contexts/GithubDataContext";
+import { formatDate } from "@/utils/formatDate";
 import {
   Building,
   Calendar,
@@ -77,7 +78,7 @@ export default function Profile() {
         <Separator />
         <span className="flex items-center gap-2">
           <Calendar className="text-white" size={32} />
-          Conta criada em: {created_at}
+          Conta criada em: {formatDate(created_at)}
         </span>
       </div>
     </section>
