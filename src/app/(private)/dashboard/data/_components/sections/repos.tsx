@@ -9,14 +9,26 @@ import {
 } from "chart.js";
 import { BadgeAlert, Eye, FolderGit, Star } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
+import { DataType } from "../../../_components/bar-chart-section/favorite-langs-chart";
+import { generateColors } from "@/utils/chartColors";
 
 export default function Repos() {
   const { repos } = useGithubDataContext();
   const [stars, setStars] = useState(0);
   const [watchers, setWatchers] = useState(0);
   const [issues, setIssues] = useState(0);
-  const [languagues, setLanguages] = useState([""]);
+  const [languages, setLanguages] = useState([""]);
+  const [data, setData] = useState<DataType>({
+    labels: [],
+    datasets: [
+      {
+        label: "Favorite Coding Languages",
+        data: [],
+        backgroundColor: [],
+      },
+    ],
+  });
 
   useEffect(() => {
     let totalStars = 0;
@@ -39,25 +51,24 @@ export default function Repos() {
     setLanguages(allLanguages);
   }, [repos]);
 
-  const [data, setData] = useState({
-    labels: languagues,
-    datasets: [
-      {
-        label: "Linguagens usadas",
-        data: [10, 7, 8, 10],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-      },
-    ],
-  });
+  useEffect(() => {
+    async function getLanguague() {}
+    setData({
+      labels: languages,
+      datasets: [
+        {
+          label: "Linguagens de programação usadas por você",
+          data: languages.map(
+            (lang) => repos.filter((repo) => repo.language === lang).length
+          ),
+          backgroundColor: generateColors(languages),
+        },
+      ],
+    });
+  }, [languages, repos]);
 
   const options = {
-    plugins: {
-      legend: {
-        labels: {
-          color: "#fff",
-        },
-      },
-    },
+    maintainAspectRatio: false,
   };
   Chart.register(BarElement, CategoryScale, LinearScale, ArcElement);
   return (
@@ -82,14 +93,8 @@ export default function Repos() {
       </header>
       <section>
         <div className="w-full h-fit bg-zinc-800 p-4 rounded-lg flex items-center  gap-4">
-          <div className=" w-full h-96 flex items-center justify-center text-white">
-            <Doughnut
-              data={data}
-              options={options}
-              width={60}
-              height={60}
-              className="text-white"
-            />
+          <div className="w-full h-96 flex items-center justify-center text-white">
+            <Bar data={data} options={options} className="text-white" />
           </div>
         </div>
       </section>
