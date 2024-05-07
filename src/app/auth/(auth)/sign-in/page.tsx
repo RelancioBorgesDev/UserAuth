@@ -6,11 +6,11 @@ import Logo from "@/components/logo/logo";
 export default function SignIn() {
   return (
     <main className="w-full h-screen flex justify-between">
-      <div className="w-1/2 px-4 py-8 bg-zinc-950 h-full flex flex-col ">
+      <div className="w-1/2 px-4 py-8 bg-white h-full flex flex-col ">
         <Link href={"/"} className="w-fit">
-          <Logo variant={"white"} />
+          <Logo variant={"dark"} />
         </Link>
-        <div className="h-screen text-white font-bold flex flex-col gap-2  justify-center">
+        <div className="h-screen text-zinc-950 font-bold flex flex-col gap-2  justify-center">
           <h1 className="text-4xl">Faça login em nossa plataforma</h1>
           <p className="text-md text-gray-600 font-extralight">
             Aproveite os nossos serviços
