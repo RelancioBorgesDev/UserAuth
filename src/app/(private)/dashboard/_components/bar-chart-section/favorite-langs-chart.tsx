@@ -13,7 +13,7 @@ import { Colors } from "chart.js";
 import { useGithubDataContext } from "@/contexts/GithubDataContext";
 import { generateColors } from "@/utils/chartColors";
 
-interface DataType {
+export type DataType = {
   labels: string[];
   datasets: {
     label: string;

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DataNav from "./data-nav";
-import Commits from "./sections/commits";
 import Repos from "./sections/repos";
 import Profile from "./sections/profile";
 import { getSession } from "@/utils/getUserInfo";
@@ -34,9 +33,6 @@ export default function DataSections({}: DataSectionsProps) {
       }
       case "repos": {
         return <Repos />;
-      }
-      case "commits": {
-        return <Commits />;
       }
       default: {
         return <Profile />;

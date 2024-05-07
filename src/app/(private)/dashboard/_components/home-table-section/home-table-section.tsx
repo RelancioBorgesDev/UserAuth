@@ -32,7 +32,6 @@ export default function HomeTableSection() {
   }, [repos]);
 
 
-
   return (
     <Table>
       <TableCaption>Uma lista dos seus projetos</TableCaption>

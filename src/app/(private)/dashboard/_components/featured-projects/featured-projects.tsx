@@ -31,7 +31,6 @@ export default function FeaturedProjects() {
       setFeaturedRepos(randomSubset);
     }
   }, [repos]);
-  console.log(featuredRepos);
   return (
     <div className="flex flex-wrap items-center w-full gap-8">
       {featuredRepos.map((featuredRepo, idx) => (

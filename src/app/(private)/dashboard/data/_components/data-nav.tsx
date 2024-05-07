@@ -24,12 +24,6 @@ export default function DataNav({
         >
           Repositórios
         </DataNavItem>
-        <DataNavItem
-          variant={dataSection === "commits" ? "white" : null}
-          onClick={() => handleDataSection("commits")}
-        >
-          Commits
-        </DataNavItem>
       </ul>
     </nav>
   );
