@@ -60,6 +60,7 @@ interface ReposResponse {
   name: string;
   description: string;
   languague: string;
+  created_at: string;
   updated_at: string;
   visibility: string;
   stargazers_count: number;
