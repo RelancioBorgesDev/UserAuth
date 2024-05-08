@@ -16,33 +16,48 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+import { useGithubDataContext } from "@/contexts/GithubDataContext";
+type FrameworksType = {
+  value: string;
+  label: string;
+};
+const frameworks: FrameworksType[] = [];
 
 export function ComboboxFilter() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const [languages, setLanguages] = React.useState<string[]>([]);
+  const { repos } = useGithubDataContext();
+
+  React.useEffect(() => {
+    const allLanguages: { [key: string]: number } = {};
+
+    repos.forEach((repo) => {
+      if (repo.language) {
+        allLanguages[repo.language] = (allLanguages[repo.language] || 0) + 1;
+      }
+    });
+    const sortedLanguages = Object.keys(allLanguages).sort(
+      (a, b) => allLanguages[b] - allLanguages[a]
+    );
+    const limitedLanguages = sortedLanguages.slice(0, 5);
+
+    setLanguages(limitedLanguages);
+  }, [repos]);
+
+  React.useEffect(() => {
+    languages.forEach((lang) => {
+      if (
+        frameworks.length === 0 ||
+        !frameworks.some((frame) => frame.value === lang.toLowerCase())
+      ) {
+        frameworks.push({
+          value: lang.toLowerCase(),
+          label: lang,
+        });
+      }
+    });
+  }, [languages]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -62,7 +77,7 @@ export function ComboboxFilter() {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandEmpty>Nenhum encontrado.</CommandEmpty>
           <CommandGroup>
             <CommandList>
               {frameworks.map((framework, idx) => (
