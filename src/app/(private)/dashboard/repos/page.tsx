@@ -57,12 +57,6 @@ export default function Repos() {
               <li>
                 <ComboboxFilter />
               </li>
-              <li>
-                <ComboboxFilter />
-              </li>
-              <li>
-                <ComboboxFilter />
-              </li>
             </ul>
           </header>
           <section>

@@ -14,11 +14,10 @@ import { DataType } from "../../../_components/bar-chart-section/favorite-langs-
 import { generateColors } from "@/utils/chartColors";
 
 export default function Repos() {
-  const { repos } = useGithubDataContext();
+  const { repos, languages } = useGithubDataContext();
   const [stars, setStars] = useState(0);
   const [watchers, setWatchers] = useState(0);
   const [issues, setIssues] = useState(0);
-  const [languages, setLanguages] = useState([""]);
   const [data, setData] = useState<DataType>({
     labels: [],
     datasets: [
@@ -40,15 +39,11 @@ export default function Repos() {
       totalStars += repo.stargazers_count;
       totalWatchers += repo.watchers_count;
       totalIssues += repo.open_issues_count;
-      if (repo.language && !allLanguages.includes(repo.language)) {
-        allLanguages.push(repo.language);
-      }
     });
 
     setStars(totalStars);
     setWatchers(totalWatchers);
     setIssues(totalIssues);
-    setLanguages(allLanguages);
   }, [repos]);
 
   useEffect(() => {

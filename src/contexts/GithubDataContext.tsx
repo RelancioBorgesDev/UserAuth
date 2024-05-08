@@ -71,6 +71,7 @@ interface ReposResponse {
 interface IGithubDataContext {
   userData: UserDataProps;
   repos: ReposResponse[];
+  languages: string[];
 }
 
 interface GithubDataContextProviderProps {
@@ -84,12 +85,8 @@ export function GithubDataContextProvider({
 }: GithubDataContextProviderProps) {
   const [userData, setUserData] = useState<UserDataProps>({} as UserDataProps);
   const [repos, setRepos] = useState<ReposResponse[]>([]);
-
-  async function getAccessToken() {
-    const session = await getSession();
-    return session?.accessToken!;
-  }
-
+  const [languages, setLanguages] = useState<string[]>([]);
+  
   async function fetchRepos(userData: UserDataProps) {
     try {
       const { repos_url } = userData;
@@ -100,24 +97,42 @@ export function GithubDataContextProvider({
     }
   }
 
-  async function fetchUserData() {
-    try {
-      const accessToken = await getAccessToken();
-      const response = await axios.get("https://api.github.com/user", {
-        headers: {
-          Authorization: `token ${accessToken}`,
-        },
-      });
-
-      setUserData(response.data);
-    } catch (error) {
-      console.error("Error fetching user data from GitHub:", error);
-    }
-  }
-
   useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const accessToken = await getAccessToken();
+        const response = await axios.get("https://api.github.com/user", {
+          headers: {
+            Authorization: `token ${accessToken}`,
+          },
+        });
+        setUserData(response.data);
+      } catch (error) {
+        console.error("Error fetching user data from GitHub:", error);
+      }
+    }
+
+    async function getAccessToken() {
+      const session = await getSession();
+      return session?.accessToken!;
+    }
+
     fetchUserData();
   }, []);
+
+  useEffect(() => {
+    const allLanguages: { [key: string]: number } = {};
+    repos.forEach((repo) => {
+      if (repo.language) {
+        allLanguages[repo.language] = (allLanguages[repo.language] || 0) + 1;
+      }
+    });
+    const sortedLanguages = Object.keys(allLanguages).sort(
+      (a, b) => allLanguages[b] - allLanguages[a]
+    );
+    const limitedLanguages = sortedLanguages.slice(0, 5);
+    setLanguages(limitedLanguages);
+  }, [repos, setLanguages]);
 
   useEffect(() => {
     if (userData) {
@@ -126,7 +141,7 @@ export function GithubDataContextProvider({
   }, [userData]);
 
   return (
-    <GithubDataContext.Provider value={{ userData, repos }}>
+    <GithubDataContext.Provider value={{ userData, repos, languages }}>
       {children}
     </GithubDataContext.Provider>
   );

@@ -20,7 +20,7 @@ export type DataType = {
     data: number[];
     backgroundColor: string[];
   }[];
-}
+};
 
 export default function FavoriteLangsChart() {
   Chart.register(
@@ -31,8 +31,8 @@ export default function FavoriteLangsChart() {
     Colors,
     Legend
   );
-  const { repos } = useGithubDataContext();
-  const [languages, setLanguages] = useState<string[]>([]);
+  const { repos, languages } = useGithubDataContext();
+
   const [data, setData] = useState<DataType>({
     labels: [],
     datasets: [
@@ -43,22 +43,6 @@ export default function FavoriteLangsChart() {
       },
     ],
   });
-
-  useEffect(() => {
-    const allLanguages: { [key: string]: number } = {};
-
-    repos.forEach((repo) => {
-      if (repo.language) {
-        allLanguages[repo.language] = (allLanguages[repo.language] || 0) + 1;
-      }
-    });
-    const sortedLanguages = Object.keys(allLanguages).sort(
-      (a, b) => allLanguages[b] - allLanguages[a]
-    );
-    const limitedLanguages = sortedLanguages.slice(0, 5);
-
-    setLanguages(limitedLanguages);
-  }, [repos]);
 
   const options = {
     plugins: {
