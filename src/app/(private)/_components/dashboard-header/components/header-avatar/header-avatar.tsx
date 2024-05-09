@@ -23,7 +23,7 @@ export default function HeaderAvatar({ profile_pic }: HeaderAvatarProps) {
     getUserName();
   }, []);
   return (
-    <div className="text-white flex hover:bg-gray-600/25 rounded p-2 gap-4 w-full">
+    <div className="text-white flex hover:bg-gray-600/25 rounded p-2 gap-4 ">
       <Avatar>
         <AvatarImage src={profile_pic} />
         <AvatarFallback className="text-black">{userInitials}</AvatarFallback>
