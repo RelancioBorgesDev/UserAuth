@@ -16,7 +16,7 @@ export default function AsideNav({
 }: AsideNavProps) {
   let bgStyle = "";
   if (currentPath === href) {
-    bgStyle = "bg-white text-zinc-950";
+    bgStyle = "bg-zinc-400/40";
   }
   return (
     <Link href={href}>
